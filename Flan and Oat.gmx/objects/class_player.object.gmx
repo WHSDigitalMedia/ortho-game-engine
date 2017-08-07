@@ -42,7 +42,7 @@ moveAccel = 1.5;
 moveFriction = 0.45;
 deadZone = 0.5;
 offSetSpeed = 0;
-mass = 1;
+mass = 100;
 </string>
           </argument>
         </arguments>
@@ -75,6 +75,7 @@ if input_key_down() &amp;&amp; input_key_left() motion_add(225, moveAccel);
 if input_key_down() motion_add(270, moveAccel);
 if input_key_down() &amp;&amp; input_key_right() motion_add(315, moveAccel);
 
+move_push();
 move_step();
 
 if keyboard_check_pressed(vk_escape) game_restart();
@@ -102,6 +103,7 @@ if keyboard_check_pressed(vk_escape) game_restart();
           <argument>
             <kind>1</kind>
             <string>draw_self();
+draw_text(x, y - 64, place_meeting(x, y, class_solid));
 </string>
           </argument>
         </arguments>

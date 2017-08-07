@@ -8,6 +8,7 @@
   <sprites name="sprites">
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_crate</sprite>
     <sprite>sprites\spr_pushable</sprite>
   </sprites>
   <backgrounds name="background"/>
@@ -16,14 +17,16 @@
     <script>scripts\input_key_down.gml</script>
     <script>scripts\input_key_left.gml</script>
     <script>scripts\input_key_right.gml</script>
-    <script>scripts\input_key_up.gml</script>
+    <script>scripts\move_push.gml</script>
     <script>scripts\move_step.gml</script>
+    <script>scripts\input_key_up.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
   </fonts>
   <objects name="objects">
     <object>objects\class_textBox</object>
+    <object>objects\class_crate</object>
     <object>objects\class_player</object>
     <object>objects\class_pushable</object>
     <object>objects\class_solid</object>
