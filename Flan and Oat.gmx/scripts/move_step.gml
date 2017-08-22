@@ -1,19 +1,28 @@
-///move_step();
-//friction
-if speed motion_add(direction - 180, moveFriction);
+///move_step(speed, direction, collision object)
 
-//clamping the speed
-if speed <= deadZone speed -= speed - 0;
-if speed < 0 speed += 0 - speed;
-if speed > maxSpeed speed -= speed - maxSpeed;
+var spd = argument0;
+var dir = argument1;
+var toCol = argument2;
 
-//collisions
-if place_meeting(x + hspeed, y, class_solid) {
-    while !place_meeting(x + sign(hspeed), y, class_solid) x += sign(hspeed);
-    hspeed = 0;
+var xtarg = x + lengthdir_x(spd, dir);
+var ytarg = y + lengthdir_y(spd, dir);
+
+if !place_meeting(xtarg, ytarg, toCol) {
+    x = xtarg;
+    y = ytarg;
+} else {
+    var sweep_interval = 10;
+    var max_angle = 80;
+    for (var angle = sweep_interval; angle <= max_angle; angle += sweep_interval) {
+        for (var multiplier = -1; multiplier <= 1; multiplier += 2) {
+            var angle_to_check = dir + angle * multiplier;
+            xtarg = x + lengthdir_x(spd, angle_to_check);
+            ytarg = y + lengthdir_y(spd, angle_to_check);
+            if !place_meeting(xtarg, ytarg, toCol) {
+                x = xtarg;
+                y = ytarg;
+                exit;
+            }
+        }   
+    }
 }
-
-if place_meeting(x, y + vspeed, class_solid) {
-    while !place_meeting(x, y + sign(vspeed), class_solid) y += sign(vspeed);
-    vspeed = 0;
-} 
