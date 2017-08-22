@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-9999</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,14 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialize message and prerender 
+            <string>///Initalize message
+init = false;
+message = "error: devs suck at programming. please let them know. let them know that the uh, program failed, not that they suck. or whatever, I'm a text-box message, not a cop";
+
 textSpeed = 1 / room_speed; //must be at least 0, smaller = faster, must be over room_speed
 duration = room_speed / room_speed; //same as above
-message = "According to all known laws of aviation, there is no way that a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyways. Because bees don't care what humans think is impossible";
 strTemp = "";
 strDisplay = "";
 
-strLen = string_length(message);
 lastSpace = 0;
 lastSpaceNum = 1;
 lineBreak = 0;
@@ -45,55 +46,11 @@ last = false;
 
 nextChar = "";
 pause = false;
-draw_set_font(font0);
+draw_set_font(fnt_textbox);
 
 width = room_width/2;
 height = 256;
 padding = 16;
-
-//Prerender the string
-while strPos &lt;= strLen {
-    //pull characters one at a time from the original
-    nextChar = string_copy(message, strPos, 1);
-    
-    //check for spaces
-    if nextChar == " " {
-        lastSpace[lastSpaceNum] = strPos;
-        lastSpaceNum++;
-    }
-    
-    //copy the character into the temp string
-    strTemp += nextChar;
-    strPos++;
-    
-    //check if the string has gone over the horizontal edge
-    if string_width(strTemp) &gt; width - padding {
-        //add line break
-        strTemp = string_insert("#", strTemp, lastSpace[lastSpaceNum - 1]);
-        lineBreak[lineBreakNum] = lastSpace[lastSpaceNum - 1];
-        lineBreakNum++;
-        //get rid of extra space (+1 becuase we added a line break in the previous line)
-        strTemp = string_delete(strTemp, lastSpace[lastSpaceNum - 1] + 1, 1);
-    }
-    
-    //check if the string has gone over the vertical edge (only once)
-    if vCheck == 0 &amp;&amp; string_height(strTemp) &gt; height - padding vCheck = lineBreakNum - 2;
-}
-
-//Set other stuff
-while (paraBreakNum &lt; lineBreakNum - paraBreakNum * vCheck) {
-    paraBreak[paraBreakNum] = lineBreak[paraBreakNum + paraBreakNum * vCheck] + 1;
-    paraBreakNum++;
-}
-
-//Reset Stuff
-message = strTemp;
-strLen = string_length(message);
-strPos = 1;
-paraBreakNum = 1;
-
-//Begin to render text
-alarm_set(0, room_speed * textSpeed);
 </string>
           </argument>
         </arguments>
@@ -160,6 +117,76 @@ alarm_set(0, room_speed * textSpeed);
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Prerender 
+if !init {    
+    strLen = string_length(message);
+    //Prerender the string
+    while strPos &lt;= strLen {
+        //pull characters one at a time from the original
+        nextChar = string_copy(message, strPos, 1);
+        
+        //check for spaces
+        if nextChar == " " {
+            lastSpace[lastSpaceNum] = strPos;
+            lastSpaceNum++;
+        }
+        
+        //copy the character into the temp string
+        strTemp += nextChar;
+        strPos++;
+        
+        //check if the string has gone over the horizontal edge
+        if string_width(strTemp) &gt; width - padding {
+            //add line break
+            strTemp = string_insert("#", strTemp, lastSpace[lastSpaceNum - 1]);
+            lineBreak[lineBreakNum] = lastSpace[lastSpaceNum - 1];
+            lineBreakNum++;
+            //get rid of extra space (+1 becuase we added a line break in the previous line)
+            strTemp = string_delete(strTemp, lastSpace[lastSpaceNum - 1] + 1, 1);
+        }
+        
+        //check if the string has gone over the vertical edge (only once)
+        if vCheck == 0 &amp;&amp; string_height(strTemp) &gt; height - padding vCheck = lineBreakNum - 2;
+    }
+    
+    //Set other stuff
+    while (paraBreakNum &lt; lineBreakNum - paraBreakNum * vCheck) {
+        paraBreak[paraBreakNum] = lineBreak[paraBreakNum + paraBreakNum * vCheck] + 1;
+        paraBreakNum++;
+    }
+    
+    //Reset Stuff
+    message = strTemp;
+    strLen = string_length(message);
+    strPos = 1;
+    paraBreakNum = 1;
+    
+    //Begin to render text
+    alarm_set(0, room_speed * textSpeed);
+    init = true;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -206,7 +233,7 @@ if pause &amp;&amp; mouse_check_button_pressed(mb_left) {
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -224,7 +251,11 @@ if pause &amp;&amp; mouse_check_button_pressed(mb_left) {
           <argument>
             <kind>1</kind>
             <string>///draw the text
-draw_rectangle(x, y, x + width, y + height, true);
+
+var oldAlpha = draw_get_alpha();
+draw_set_alpha(0.7);
+draw_roundrect_colour_ext(x, y, x + width, y + height, 10, 10, c_gray, c_gray, false);
+draw_set_alpha(oldAlpha);
 draw_text(x + padding, y + padding, strDisplay);
 </string>
           </argument>

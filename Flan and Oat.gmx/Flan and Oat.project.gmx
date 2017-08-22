@@ -8,8 +8,6 @@
   <sprites name="sprites">
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_player</sprite>
-    <sprite>sprites\spr_crate</sprite>
-    <sprite>sprites\spr_pushable</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -17,9 +15,10 @@
     <script>scripts\move_step.gml</script>
   </scripts>
   <fonts name="fonts">
-    <font>fonts\font0</font>
+    <font>fonts\fnt_textbox</font>
   </fonts>
   <objects name="objects">
+    <object>objects\controller_text</object>
     <object>objects\class_textBox</object>
     <object>objects\class_player</object>
     <object>objects\class_solid</object>
