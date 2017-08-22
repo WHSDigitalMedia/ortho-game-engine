@@ -12,13 +12,20 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\create_textbox_main.gml</script>
     <script>scripts\move_step.gml</script>
+    <scripts name="Textbox Scripts">
+      <script>scripts\scr_text1.gml</script>
+      <script>scripts\scr_text2.gml</script>
+      <script>scripts\scr_text3.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_textbox</font>
   </fonts>
   <objects name="objects">
-    <object>objects\controller_text</object>
+    <object>objects\class_npc</object>
+    <object>objects\controller_pause</object>
     <object>objects\class_textBox</object>
     <object>objects\class_player</object>
     <object>objects\class_solid</object>

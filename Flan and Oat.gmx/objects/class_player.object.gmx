@@ -30,6 +30,7 @@ move_speed_max = 150;
 move_accel = 10;
 move_friction = 7;
 move_direction = 0;
+allowMovement = true;
 
 movement_inputs[0] = ord("D");
 movement_inputs[1] = ord("W");
@@ -57,32 +58,34 @@ movement_inputs[3] = ord("S");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var seconds_passed = delta_time/1000000;
-var move_speed_this_frame = move_speed * seconds_passed;
-
-var move_xinput = 0;
-var move_yinput = 0;
-
-for (var i = 0; i &lt; array_length_1d(movement_inputs); i++) {
-    var this_key = movement_inputs[i];
-    if keyboard_check(this_key) {
-        move_direction = i * 90;
-        move_xinput += lengthdir_x(1, move_direction);
-        move_yinput += lengthdir_y(1, move_direction);
-        move_speed += move_accel;
+            <string>if allowMovement {
+    var seconds_passed = delta_time/1000000;
+    var move_speed_this_frame = move_speed * seconds_passed;
+    
+    var move_xinput = 0;
+    var move_yinput = 0;
+    
+    for (var i = 0; i &lt; array_length_1d(movement_inputs); i++) {
+        var this_key = movement_inputs[i];
+        if keyboard_check(this_key) {
+            move_direction = i * 90;
+            move_xinput += lengthdir_x(1, move_direction);
+            move_yinput += lengthdir_y(1, move_direction);
+            move_speed += move_accel;
+        }
     }
+    
+    var moving = (point_distance(0, 0, move_xinput, move_yinput) &gt; 0);
+    
+    move_speed -= move_friction;
+    move_speed = clamp(move_speed, 0, move_speed_max);
+    
+    if move_speed {
+        if moving var move_angle = point_direction(0, 0, move_xinput, move_yinput);
+        else var move_angle = move_direction;
+        move_step(move_speed_this_frame, move_angle, class_wall);
+    } 
 }
-
-var moving = (point_distance(0, 0, move_xinput, move_yinput) &gt; 0);
-
-move_speed -= move_friction;
-move_speed = clamp(move_speed, 0, move_speed_max);
-
-if move_speed {
-    if moving var move_angle = point_direction(0, 0, move_xinput, move_yinput);
-    else var move_angle = move_direction;
-    move_step(move_speed_this_frame, move_angle, class_wall);
-} 
 </string>
           </argument>
         </arguments>
