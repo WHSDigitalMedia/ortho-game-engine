@@ -26,8 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>if distance_to_object(class_player) &lt; 64 &amp;&amp; keyboard_check_pressed(ord("E")) {
-    create_textbox_main("error: devs suck at programming. please let them know. let them know that the uh, program failed, not that they suck. or whatever, I'm a text-box message, not a cop.#[1] alright#[2] okay#[3] no",
-    scr_text1, scr_text2, scr_text3);
+    create_textbox_main("Toggle movement speed. Current speed: " + string(class_player.move_speed_max) + "#[1] halve speed#[2] double speed#[3] reset speed", scr_text1, scr_text2, scr_text3);
 }
 </string>
           </argument>

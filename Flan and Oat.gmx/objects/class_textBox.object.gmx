@@ -91,12 +91,14 @@ if strPos &gt; strLen {
 }
 
 //Stop if stop reached
-if strPos == paraBreak[paraBreakNum] {
-    //get rid of the extra char
-    strDisplay = string_delete(strDisplay, string_length(strDisplay), 1);
-    pause = true;    
-    alarm_set(0, -1);
-    exit;
+if is_array(paraBreak) {
+    if strPos == paraBreak[paraBreakNum] {
+        //get rid of the extra char
+        strDisplay = string_delete(strDisplay, string_length(strDisplay), 1);
+        pause = true;    
+        alarm_set(0, -1);
+        exit;
+    }
 }
 
 alarm_set(0, room_speed * textSpeed);
@@ -156,9 +158,11 @@ if !init {
     }
     
     //Set other stuff
-    while (paraBreakNum &lt; lineBreakNum - paraBreakNum * vCheck) {
-        paraBreak[paraBreakNum] = lineBreak[paraBreakNum + paraBreakNum * vCheck] + 1;
-        paraBreakNum++;
+    if is_array(paraBreakNum) {
+        while (paraBreakNum &lt; lineBreakNum - paraBreakNum * vCheck) {
+            paraBreak[paraBreakNum] = lineBreak[paraBreakNum + paraBreakNum * vCheck] + 1;
+            paraBreakNum++;
+        }
     }
     
     //Reset Stuff
