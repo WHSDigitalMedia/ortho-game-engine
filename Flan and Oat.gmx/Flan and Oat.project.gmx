@@ -6,30 +6,59 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_wall</sprite>
+    <sprites name="Environment">
+      <sprite>sprites\spr_wall</sprite>
+      <sprite>sprites\mask_wall_top</sprite>
+      <sprite>sprites\mask_wall_bottom</sprite>
+    </sprites>
     <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_main_menu_start</sprite>
+    <sprite>sprites\spr_npc</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\create_textbox_main.gml</script>
     <script>scripts\move_step.gml</script>
-    <scripts name="Textbox Scripts">
-      <script>scripts\scr_text1.gml</script>
-      <script>scripts\scr_text2.gml</script>
-      <script>scripts\scr_text3.gml</script>
+    <script>scripts\isOver.gml</script>
+    <scripts name="Menus">
+      <script>scripts\create_button.gml</script>
+      <scripts name="Main Menu">
+        <script>scripts\scr_main_menu_play.gml</script>
+        <script>scripts\scr_main_menu_quit.gml</script>
+      </scripts>
+    </scripts>
+    <scripts name="Textbox">
+      <script>scripts\create_textbox_main.gml</script>
+      <scripts name="Actions">
+        <script>scripts\scr_text1.gml</script>
+        <script>scripts\scr_text2.gml</script>
+        <script>scripts\scr_text3.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_textbox</font>
   </fonts>
   <objects name="objects">
-    <object>objects\class_npc</object>
-    <object>objects\controller_pause</object>
-    <object>objects\class_textBox</object>
-    <object>objects\class_player</object>
-    <object>objects\class_solid</object>
-    <object>objects\class_wall</object>
+    <object>objects\controller_depth</object>
+    <object>objects\class_nonGUI</object>
+    <objects name="Player">
+      <object>objects\class_player</object>
+    </objects>
+    <objects name="NPCs">
+      <object>objects\class_npc</object>
+    </objects>
+    <objects name="Environment">
+      <object>objects\class_solid</object>
+      <object>objects\class_wall</object>
+    </objects>
+    <objects name="GUI">
+      <object>objects\class_button</object>
+      <object>objects\controller_pause</object>
+      <object>objects\class_textBox</object>
+      <object>objects\gui_camera</object>
+      <object>objects\controller_main_menu</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initialize</room>

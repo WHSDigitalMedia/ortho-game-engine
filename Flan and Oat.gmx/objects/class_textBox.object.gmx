@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-10000</depth>
+  <depth>-9999</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -48,9 +48,9 @@ draw_set_font(fnt_textbox);
 
 
 //can be overriden
-accept[0] = scr_text1;
-accept[1] = scr_text2;
-accept[2] = scr_text3;
+accept[0] = noone;
+accept[1] = noone;
+accept[2] = noone;
 
 width = room_width/2;
 height = 256;
