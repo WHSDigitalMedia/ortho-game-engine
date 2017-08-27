@@ -3,7 +3,7 @@
   <spriteName>spr_main_menu_start</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -31,6 +31,8 @@ action = noone;
 text_color = c_white;
 center = false;
 font = fnt_textbox;
+
+
 </string>
           </argument>
         </arguments>
@@ -77,6 +79,12 @@ font = fnt_textbox;
           <argument>
             <kind>1</kind>
             <string>draw_self();
+
+//scales boxes 
+strWidth = string_width(name);
+if strWidth &gt; sprite_width {
+    image_xscale = 1.1 * (strWidth / sprite_width);
+}
 
 draw_set_font(fnt_textbox);
 

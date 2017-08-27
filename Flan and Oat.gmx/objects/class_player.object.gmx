@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>class_nonGUI</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -36,6 +36,8 @@ movement_inputs[0] = ord("D");
 movement_inputs[1] = ord("W");
 movement_inputs[2] = ord("A");
 movement_inputs[3] = ord("S");
+
+if !instance_exists(gui_camera) instance_create(x, y, gui_camera);
 </string>
           </argument>
         </arguments>

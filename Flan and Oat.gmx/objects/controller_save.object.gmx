@@ -5,10 +5,10 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>class_nonGUI</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="3" enumb="0">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,18 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(class_player) {
-    mask_index = spr_wall;
-    
-    //allows them to "occupy" the space behind or in front of a wall
-    //while ensureing that the player doesn't phase through vertical walls
-    if !place_meeting(x, y + sprite_height/2, class_solid) {
-        if class_player.y &gt; y mask_index = mask_wall_top;
-    }
-    if !place_meeting(x, y - sprite_height/2, class_solid) {
-        if class_player.y &lt; y mask_index = mask_wall_bottom;
-    }
-}
+            <string>ini_open(working_directory + "save.ini");
+
+ini_write_real("Player", "x", class_player.x);
+ini_write_real("Player", "y", class_player.y);
+ini_write_real("Player", "room", room);
+
+ini_close();
+
+instance_destroy();
 </string>
           </argument>
         </arguments>

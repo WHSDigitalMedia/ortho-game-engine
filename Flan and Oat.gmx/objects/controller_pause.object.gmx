@@ -30,6 +30,7 @@ intensity = 0.7; //the blur intensity
 steps = 3; //also affects intensity but it's better to change the above value
 draw = false; 
 spr = -1; //the sprite the surface will draw
+done = false;
 </string>
           </argument>
         </arguments>
@@ -54,17 +55,24 @@ spr = -1; //the sprite the surface will draw
             <kind>1</kind>
             <string>if keyboard_check_pressed(vk_escape) {
     if !pause {
+        instance_create(x, y, controller_save);
         texture_set_interpolation(true);
         pause = true;
         draw = true;
     } else {
+        if instance_exists(class_button) with (class_button) instance_destroy();
         pause = false;
+        done = false;
         sprite_delete(spr);
         instance_activate_all();
     }
 }
 
 if keyboard_check_pressed(vk_control) screen_save("screenshot.png");
+
+if done {
+    create_button("Main menu", scr_pause_return, c_white, true, fnt_textbox, view_xview[0] + view_wview[0]/2, view_yview[0] + view_hview[0]/2 + 64);
+}
 </string>
           </argument>
         </arguments>
@@ -149,6 +157,8 @@ if keyboard_check_pressed(vk_control) screen_save("screenshot.png");
     
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
+    
+    done = true;
 }
 </string>
           </argument>

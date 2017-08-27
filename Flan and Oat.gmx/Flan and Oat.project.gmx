@@ -3,6 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="1" name="datafiles"/>
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -10,6 +11,7 @@
       <sprite>sprites\spr_wall</sprite>
       <sprite>sprites\mask_wall_top</sprite>
       <sprite>sprites\mask_wall_bottom</sprite>
+      <sprite>sprites\spr_door</sprite>
     </sprites>
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_main_menu_start</sprite>
@@ -22,14 +24,20 @@
     <script>scripts\isOver.gml</script>
     <scripts name="Menus">
       <script>scripts\create_button.gml</script>
-      <scripts name="Main Menu">
+      <scripts name="Main">
         <script>scripts\scr_main_menu_play.gml</script>
         <script>scripts\scr_main_menu_quit.gml</script>
+        <script>scripts\scr_main_menu_delete.gml</script>
+      </scripts>
+      <scripts name="Pause">
+        <script>scripts\scr_pause_return.gml</script>
       </scripts>
     </scripts>
     <scripts name="Textbox">
       <script>scripts\create_textbox_main.gml</script>
       <scripts name="Actions">
+        <script>scripts\scr_null.gml</script>
+        <script>scripts\scr_unlock.gml</script>
         <script>scripts\scr_text1.gml</script>
         <script>scripts\scr_text2.gml</script>
         <script>scripts\scr_text3.gml</script>
@@ -51,10 +59,20 @@
     <objects name="Environment">
       <object>objects\class_solid</object>
       <object>objects\class_wall</object>
+      <objects name="Doors">
+        <object>objects\class_door</object>
+        <objects name="Level 1">
+          <object>objects\door_1_2</object>
+        </objects>
+        <objects name="Level 2">
+          <object>objects\door_2_1</object>
+        </objects>
+      </objects>
     </objects>
     <objects name="GUI">
       <object>objects\class_button</object>
       <object>objects\controller_pause</object>
+      <object>objects\controller_save</object>
       <object>objects\class_textBox</object>
       <object>objects\gui_camera</object>
       <object>objects\controller_main_menu</object>
@@ -64,6 +82,7 @@
     <room>rooms\rm_initialize</room>
     <room>rooms\rm_main_menu</room>
     <room>rooms\rm_level_1</room>
+    <room>rooms\rm_level_2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

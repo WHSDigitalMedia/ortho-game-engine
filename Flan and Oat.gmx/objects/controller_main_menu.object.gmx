@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>create_button("Play", scr_main_menu_play, c_white, true, fnt_textbox, room_width/2, room_height/2);
-create_button("Quit", scr_main_menu_quit, c_white, true, fnt_textbox, room_width/2, room_height/2 + 128);
+            <string>create_button("Play", scr_main_menu_play, c_white, true, fnt_textbox, room_width/2, room_height/2 - 128);
+create_button("Quit", scr_main_menu_quit, c_white, true, fnt_textbox, room_width/2, room_height/2);
+create_button("Delete Save", scr_main_menu_delete, c_white, true, fnt_textbox, room_width/2, room_height/2 + 128);
 
 instance_destroy();
 </string>
