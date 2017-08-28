@@ -32,7 +32,7 @@ if !view_visible view_visible = true;
 
 //Set the view and lock on player
 if (instance_exists(class_player)) {
-    view_object[0] = class_player;
+    view_object[0] = self;
     view_xview[0] = x - window_get_width()/4;
     view_wview[0] = window_get_width()/2;
     view_yview[0] = y - window_get_height()/4;
@@ -40,9 +40,7 @@ if (instance_exists(class_player)) {
     
     x = class_player.x;
     y = class_player.y;
-    
 }
-
 </string>
           </argument>
         </arguments>

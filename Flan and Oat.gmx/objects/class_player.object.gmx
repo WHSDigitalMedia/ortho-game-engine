@@ -25,7 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>move_speed = 0;
+            <string>///Spawn check
+if !instance_exists(gui_camera) instance_create(x, y, gui_camera);
+if !instance_exists(controller_depth) instance_create(x, y, controller_depth);
+if !instance_exists(controller_pause) instance_create(x, y, controller_pause);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Initialize Variables 
+move_speed = 0;
 move_speed_max = 150;
 move_accel = 10;
 move_friction = 7;
@@ -36,8 +61,6 @@ movement_inputs[0] = ord("D");
 movement_inputs[1] = ord("W");
 movement_inputs[2] = ord("A");
 movement_inputs[3] = ord("S");
-
-if !instance_exists(gui_camera) instance_create(x, y, gui_camera);
 </string>
           </argument>
         </arguments>
