@@ -1,21 +1,24 @@
-///isOver(covering object [0 for mouse], covered object)
+///isOver(object, x1, x2, y1, y2)
+//ignores the last four arguments if a valid object is passed into 
 over = false;
-object = argument0;
-target = argument1;
+target = argument0;
 
-if object == 0 {
-    objx = mouse_x;
-    objy = mouse_y;
+if target == noone {
+    x1 = argument1;
+    x2 = argument2;
+    y1 = argument3;
+    y2 = argument4;    
 } else {
-    objx = object.x;
-    objy = object.y;
+    x1 = target.bbox_left;
+    x2 = target.bbox_right;
+    y1 = target.bbox_top;
+    y2 = target.bbox_bottom;
 }
 
-if objx > target.bbox_left && objx < target.bbox_right {
-    if objy > target.bbox_top && objy < target.bbox_bottom {
+if mouse_x > x1 && mouse_x < x2 {
+    if mouse_y > y1 && mouse_y < y2 {
         over = true;
-    } else over = false;
-} else over = false;
-
+    }
+}
 
 return over;

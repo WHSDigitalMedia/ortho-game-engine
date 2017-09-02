@@ -26,9 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>///Default Functions
-//Turn on views
-if !view_enabled view_enabled = true;
-if !view_visible view_visible = true;
+if room != rm_pause_menu {
+    //Turn on views
+    if !view_enabled view_enabled = true;
+    if !view_visible view_visible = true;
+    persistent = true;
+}
 
 //Set the view and lock on player
 if (instance_exists(class_player)) {

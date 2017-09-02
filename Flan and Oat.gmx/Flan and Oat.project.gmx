@@ -48,6 +48,7 @@
     <font>fonts\fnt_textbox</font>
   </fonts>
   <objects name="objects">
+    <object>objects\debug_mouse</object>
     <object>objects\controller_depth</object>
     <object>objects\class_nonGUI</object>
     <objects name="Player">
@@ -81,6 +82,7 @@
   <rooms name="rooms">
     <room>rooms\rm_initialize</room>
     <room>rooms\rm_main_menu</room>
+    <room>rooms\rm_pause_menu</room>
     <room>rooms\rm_level_1</room>
     <room>rooms\rm_level_2</room>
   </rooms>

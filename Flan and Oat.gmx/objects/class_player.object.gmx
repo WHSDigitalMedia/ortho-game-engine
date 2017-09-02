@@ -83,7 +83,9 @@ movement_inputs[3] = ord("S");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if allowMovement {
+            <string>if room != rm_pause_menu persistent = true;
+
+if allowMovement {
     var seconds_passed = delta_time/1000000;
     var move_speed_this_frame = move_speed * seconds_passed;
     
