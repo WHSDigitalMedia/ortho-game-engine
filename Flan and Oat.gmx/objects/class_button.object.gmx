@@ -60,7 +60,6 @@ strHeight = string_height(name);
 strHeight = string_height(name);
 
 if isOver(self, 0, 0, 0, 0) {
-    show_debug_message(id);
     if mouse_check_button_pressed(mb_left) script_execute(action);
 }
 </string>
@@ -86,7 +85,7 @@ if isOver(self, 0, 0, 0, 0) {
           <argument>
             <kind>1</kind>
             <string>draw_self();
-image_xscale = 1.2 * (strWidth / sprite_get_width(spr));
+if sprite_get_width(spr) &lt; strWidth image_xscale = 1.2 * (strWidth / sprite_get_width(spr));
 draw_set_font(fnt_textbox);
 
 if center {
