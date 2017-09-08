@@ -32,8 +32,8 @@ text_color = c_white;
 center = false;
 font = fnt_textbox;
 spr = spr_main_menu_start;
-strWidth = string_width(name);
-strHeight = string_height(name);
+strWidth = string_width(name) * global.textScale;
+strHeight = string_height(name) * global.textScale;
 </string>
           </argument>
         </arguments>
@@ -56,8 +56,8 @@ strHeight = string_height(name);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>strWidth = string_width(name);
-strHeight = string_height(name);
+            <string>strWidth = string_width(name) * global.textScale;
+strHeight = string_height(name) * global.textScale;
 
 if isOver(self, 0, 0, 0, 0) {
     if mouse_check_button_pressed(mb_left) script_execute(action);
@@ -94,7 +94,7 @@ if center {
 }
 
 draw_set_color(text_color);
-draw_text(x, y, name);
+draw_text_transformed(x, y, name, global.textScale, global.textScale, 0);
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);

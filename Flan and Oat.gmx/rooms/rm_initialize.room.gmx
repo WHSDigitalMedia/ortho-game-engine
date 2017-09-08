@@ -12,14 +12,23 @@
   <showcolour>-1</showcolour>
   <code>draw_texture_flush();
 texture_set_interpolation(false);
+
 randomize();
-window_set_size(1280, 720);
-display_set_gui_size(window_get_width(), window_get_height());
+
+var a = application_get_position();
+var x1 = a[0];
+var y1 = a[1];
+var x2 = a[2];
+var y2 = a[3];
+window_set_fullscreen(true);
+display_set_gui_maximise(display_get_width()/room_width, display_get_height()/room_height, x1, y1);
 
 global.keyUp = ord("W");
 global.keyDown = ord("S");
 global.keyRight = ord("D");
 global.keyLeft = ord("A");
+
+global.textScale = .25;
 
 room_goto_next();</code>
   <enableViews>0</enableViews>

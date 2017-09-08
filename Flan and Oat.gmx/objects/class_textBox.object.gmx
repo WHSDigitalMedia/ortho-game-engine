@@ -46,14 +46,13 @@ nextChar = "";
 pause = false;
 draw_set_font(fnt_textbox);
 
-
 //can be overriden
 accept[0] = noone;
 accept[1] = noone;
 accept[2] = noone;
 
-width = room_width/2;
-height = 256;
+width = window_get_width() * 0.8;
+height = window_get_height() * 0.8;
 padding = 32;
 
 </string>
@@ -144,7 +143,7 @@ if !init {
         strPos++;
         
         //check if the string has gone over the horizontal edge
-        if string_width(strTemp) &gt; width - padding * 2 {
+        if string_width(strTemp) * global.textScale &gt; width - padding * 2 {
             //add line break
             strTemp = string_insert("#", strTemp, lastSpace[lastSpaceNum - 1]);
             lineBreak[lineBreakNum] = lastSpace[lastSpaceNum - 1];
@@ -154,7 +153,7 @@ if !init {
         }
         
         //check if the string has gone over the vertical edge (only once)
-        if vCheck == 0 &amp;&amp; string_height(strTemp) &gt; height - padding vCheck = lineBreakNum - 2;
+        if vCheck == 0 &amp;&amp; string_height(strTemp) * global.textScale &gt; height - padding vCheck = lineBreakNum - 2;
     }
     
     //Set other stuff
@@ -281,7 +280,7 @@ var oldAlpha = draw_get_alpha();
 draw_set_alpha(0.7);
 draw_roundrect_colour_ext(x, y, x + width, y + height, 10, 10, c_gray, c_gray, false);
 draw_set_alpha(oldAlpha);
-draw_text(x + padding, y + padding, strDisplay);
+draw_text_transformed(x + padding, y + padding, strDisplay, global.textScale, global.textScale, 0);
 </string>
           </argument>
         </arguments>
