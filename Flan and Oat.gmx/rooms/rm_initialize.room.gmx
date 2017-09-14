@@ -15,13 +15,24 @@ texture_set_interpolation(false);
 
 randomize();
 
-var a = application_get_position();
-var x1 = a[0];
-var y1 = a[1];
-var x2 = a[2];
-var y2 = a[3];
+/*show_debug_message(string(display_get_width()) + ", " + string(display_get_height()));
+show_debug_message(string(window_get_width()) + ", " + string(window_get_height()));*/
+window_set_size(display_get_width(), display_get_height());
 window_set_fullscreen(true);
-display_set_gui_maximise(display_get_width()/room_width, display_get_height()/room_height, x1, y1);
+
+var a = application_get_position();
+var xx = a[0];
+var yy = a[1];
+var ww = a[2] - a[0];
+var hh = a[3] - a[1];
+
+/*show_debug_message(xx);
+show_debug_message(yy);
+show_debug_message(ww);
+show_debug_message(hh);*/
+
+display_set_gui_maximise(display_get_width()/room_width, display_get_height()/room_height, xx, yy);
+//show_debug_message(string(display_get_gui_width()) + ", " + string(display_get_gui_height()));
 
 global.keyUp = ord("W");
 global.keyDown = ord("S");

@@ -6,11 +6,11 @@ var scr2 = argument2;
 var scr3 = argument3;
 class_player.allowMovement = false;
 
-with (instance_create(display_get_width() * 0.01, display_get_height() * 0.01, class_textBox)) {
+with (instance_create(32, 32, class_textBox)) {
     message = msg;
     accept[0] = scr1;
     accept[1] = scr2;
     accept[2] = scr3;
-    width = display_get_width() * 0.65;
-    height = display_get_height() * 0.65;
+    width = 1200;
+    height = 700;
 }
