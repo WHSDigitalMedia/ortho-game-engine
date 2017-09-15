@@ -1,2 +1,2 @@
-# flan-and-oat
-The repository for WHS Digital Media Club's 2017-18 game, Flan and Oat.
+# ortho-game-engine
+originally created for the game Flan and Oat
