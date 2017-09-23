@@ -29,6 +29,7 @@
 if !instance_exists(gui_camera) instance_create(x, y, gui_camera);
 if !instance_exists(controller_depth) instance_create(x, y, controller_depth);
 if !instance_exists(controller_pause) instance_create(x, y, controller_pause);
+if !instance_exists(data_inventory) instance_create(x, y, data_inventory);
 </string>
           </argument>
         </arguments>
@@ -83,8 +84,7 @@ movement_inputs[3] = ord("S");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if room != rm_pause_menu persistent = true;
-
+            <string>//Movement
 if allowMovement {
     var seconds_passed = delta_time/1000000;
     var move_speed_this_frame = move_speed * seconds_passed;
@@ -113,6 +113,33 @@ if allowMovement {
         move_step(move_speed_this_frame, move_angle, class_wall);
     } 
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Room Checks
+if room != rm_pause_menu &amp;&amp; room != rm_map {
+    if !instance_exists(gui_camera) instance_create(x, y, gui_camera);
+    allowMovement = true;
+    visible = true;
+}
+if room != rm_pause_menu persistent = true;
 </string>
           </argument>
         </arguments>

@@ -35,10 +35,10 @@ if room != rm_pause_menu {
 
 //Set the view and lock on player
 if (instance_exists(class_player)) {
-    view_xview[0] = x - 640;
-    view_wview[0] = 1280;
-    view_yview[0] = y - 360;
-    view_hview[0] = 720;
+    view_xview[0] = x - 320;
+    view_wview[0] = 640;
+    view_yview[0] = y - 180;
+    view_hview[0] = 360;
     
     x = class_player.x;
     y = class_player.y;

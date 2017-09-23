@@ -61,7 +61,7 @@ if inst {
                 y = other.target_y;
             }
         } else {
-            create_textbox_main("The door is locked.#[1] okay#[2] use key", scr_null, scr_unlock, scr_null);
+            create_textbox_main("The door is locked.#[1] okay#[2] use key", scr_null, scr_unlock, scr_null, noone, noone, noone);
         }
     }
 }
